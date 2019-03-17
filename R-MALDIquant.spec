@@ -4,14 +4,15 @@
 #
 Name     : R-MALDIquant
 Version  : 1.19.2
-Release  : 8
+Release  : 9
 URL      : https://cran.r-project.org/src/contrib/MALDIquant_1.19.2.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/MALDIquant_1.19.2.tar.gz
 Summary  : Quantitative Analysis of Mass Spectrometry Data
 Group    : Development/Tools
 License  : GPL-3.0
 Requires: R-MALDIquant-lib = %{version}-%{release}
-Requires: R-highr
+Requires: R-assertthat
+BuildRequires : R-assertthat
 BuildRequires : R-highr
 BuildRequires : buildreq-R
 BuildRequires : texlive
@@ -43,10 +44,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1552527358
+export SOURCE_DATE_EPOCH=1552793201
 
 %install
-export SOURCE_DATE_EPOCH=1552527358
+export SOURCE_DATE_EPOCH=1552793201
 rm -rf %{buildroot}
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -82,8 +83,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library MALDIquant|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc  MALDIquant || :
 
 
 %files
@@ -122,7 +122,69 @@ cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 /usr/lib64/R/library/MALDIquant/help/paths.rds
 /usr/lib64/R/library/MALDIquant/html/00Index.html
 /usr/lib64/R/library/MALDIquant/html/R.css
-/usr/lib64/R/library/MALDIquant/libs/symbols.rds
+/usr/lib64/R/library/MALDIquant/tests/testthat.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_alignSpectra-functions.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_approxfun-methods.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_as-methods.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_as.matrix-functions.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_as.matrix-methods.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_averageMassSpectra-functions.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_binPeaks-functions.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_calculateLabelPositions-functions.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_calibrateIntensity-methods.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_colMedians-functions.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_constructor-functions.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_coordinates-methods.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_deprecated-functions.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_detectPeaks-methods.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_determineWarpingFunctions-functions.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_doByLabel-functions.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_estimateBaseline-methods.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_estimateNoise-methods.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_filterPeaks-functions.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_findEmptyMassObjects-functions.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_findLocalMaximaLogical-methods.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_grouper-functions.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_intensity-methods.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_intensityMatrix-functions.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_irregular-functions.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_isEmpty-methods.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_isMassObject-functions.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_isMassObjectList-functions.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_isRegular-methods.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_labelPeaks-methods.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_length-methods.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_localMaxima-functions.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_mapply-functions.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_mass-methods.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_match.closest-functions.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_merge-functions.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_metaData-methods.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_monoisotopic-functions.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_monoisotopicPeaks-methods.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_morphologicalFilter-functions.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_msiSlices-functions.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_mz-methods.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_plotMsiSlice-functions.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_plotMsiSlice-methods.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_range-functions.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_referencePeaks-functions.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_removeBaseline-methods.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_removeEmptyMassObjects-functions.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_reorder.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_replaceNegativeIntensityValues.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_show-methods.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_smoothIntensity-methods.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_smoothingFilters-functions.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_snr-methods.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_subset-methods.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_totalIonCurrent-methods.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_transformIntensity-methods.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_trim-methods.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_unlist-functions.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_valid-functions.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_warp-functions.R
+/usr/lib64/R/library/MALDIquant/tests/testthat/test_warpingFunctions-functions.R
 
 %files lib
 %defattr(-,root,root,-)
