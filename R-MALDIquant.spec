@@ -7,7 +7,7 @@
 #
 Name     : R-MALDIquant
 Version  : 1.22.3
-Release  : 49
+Release  : 50
 URL      : https://cran.r-project.org/src/contrib/MALDIquant_1.22.3.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/MALDIquant_1.22.3.tar.gz
 Summary  : Quantitative Analysis of Mass Spectrometry Data
